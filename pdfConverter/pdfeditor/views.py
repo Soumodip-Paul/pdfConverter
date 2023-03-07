@@ -2,13 +2,14 @@ from django.views.generic.edit import FormView
 from django.views.decorators.csrf import csrf_exempt
 from django.http import FileResponse
 from django.http.request import HttpRequest
+from django.shortcuts import render
 from .forms import FileFieldForm
 from .utils import MergeFiles
 
 class index(FormView):
     form_class = FileFieldForm
     template_name = 'upload.html'  # Replace with your template.
-    success_url = '/'  # Replace with your URL or reverse().
+    success_url = '/download'  # Replace with your URL or reverse().
 
     @csrf_exempt
     def post(self, request:HttpRequest, *args, **kwargs):
@@ -18,6 +19,6 @@ class index(FormView):
         print(str(request))
         if form.is_valid():
             name = MergeFiles(files)
-            return FileResponse(name.upload)
+            return render(request, 'download.html',{'name': name})
         else:
             return self.form_invalid(form)

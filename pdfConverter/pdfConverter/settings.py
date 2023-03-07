@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--rc1iuv#d+g%pu5xglk*6^&7npyft1=7gu3uqsoqmzq70l32iw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spaul10032002.pythonanywhere.com','localhost']
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -134,10 +134,13 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/assets/'
+
+STATIC_ROOT = BASE_DIR / 'assets'
+
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / 'pdfeditor' / 'static',
+    BASE_DIR / 'theme' / 'static'            
 ]
 
 # Default primary key field type
