@@ -91,7 +91,8 @@ if (isAdvancedUpload) {
 
     draggableFileArea.addEventListener("drop", e => {
         let list = new DataTransfer();
-        let files = Array.from(e.dataTransfer.files).filter(e => e.type === draggableFileArea.accept);
+        console.log(fileInput.accept)
+        let files = Array.from(e.dataTransfer.files).filter(e => e.type === fileInput.accept);
         console.log(files)
         if (files.length === 0) return
         files.forEach(e => list.items.add(e))

@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  {% load static tailwind_tags %}
-  {% load static %}
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% tailwind_css %}
-  <title>Document</title>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 64
-    }
-  </style>
-</head>
-
-<body>
-  <div class="hidden bg-gray-200"></div>
+{% extends 'base.html' %}
+{% block Title %} Merge Files {% endblock %}
+{% block body %}
+{% load static %}
+<div class="hidden bg-gray-200"></div>
   <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+    <div class="container px-5 py-12 mx-auto flex flex-wrap items-center">
       <div class="md:w-1/2 md:pr-16 lg:pr-0 pr-0">
         <h1 class="title-font font-medium text-3xl text-gray-900">Slow-carb next level shoindcgoitch ethical authentic,
           poko scenester</h1>
@@ -41,7 +20,7 @@
           So why not give our website a try? It's the perfect solution for anyone who needs to merge multiple PDF files
           into a single document.</span></p>
       </div>
-      <form method="post" enctype="multipart/form-data" action="/"
+      <form method="post" enctype="multipart/form-data" action="/merge"
         class="lg:w-5/12 md:w-1/2 bg-gray-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0"
         style="display: none;">
         {% csrf_token %}
@@ -50,9 +29,6 @@
           class="relative mt-2 flex justify-center rounded-md border-2 border-dashed border-gray-400 px-6 pt-5 pb-6 transition-all"
           id="draggable_area">
           <div class="space-y-1 text-center transition-all">
-            <!-- <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg> -->
             <span class="material-symbols-outlined scale-[2] text-gray-600 m-4 transition-all" id="icon_action">
               upload
             </span>
@@ -85,6 +61,5 @@
     })
   </script>
   <script src="{% static 'js/script.js'%}"></script>
-</body>
 
-</html>
+{% endblock %}

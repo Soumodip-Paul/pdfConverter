@@ -17,5 +17,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('',index.as_view(),name="Index"),
+    path('',index,name="Index"),
+    path('merge',MergeForm.as_view(),name="Merge"),
+    path('download/<int:id>',downloadFile,name="Download")
 ]
