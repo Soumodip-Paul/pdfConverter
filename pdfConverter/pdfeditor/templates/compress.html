@@ -1,26 +1,25 @@
 {% extends 'base.html' %}
-{% block Title %} Merge Files {% endblock %}
+{% block Title %} Compress Files {% endblock %}
 {% block body %}
 {% load static %}
 <div class="hidden bg-gray-200"></div>
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-12 mx-auto flex flex-wrap items-center">
       <div class="md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-        <h1 class="title-font font-medium text-3xl text-gray-900">Slow-carb next level shoindcgoitch ethical authentic,
-          poko scenester</h1>
-        <p class="leading-relaxed mt-4">If you're looking for a hassle-free way to merge PDF files, look no further! Our website offers a simple and user-friendly platform for merging multiple PDF files into a single document.
+        <h1 class="title-font font-medium text-3xl text-gray-900">Compress Your Files</h1>
+        <p class="leading-relaxed mt-4">If you're looking for a hassle-free way to Compress PDF files, look no further! Our website offers a simple and user-friendly platform for merging multiple PDF files into a single document.
 <br>
-          Using our website to merge PDF files is easy. Simply upload your files, arrange them in the order you want,
-          and then click the merge button. Within a few seconds, you'll have a single document that contains all your
+          Using our website to Compress PDF files is easy. Simply upload your file
+          and then click the Compress button. Within a few seconds, you'll have a single document that contains all your
           information.
 <br><span class="hidden lg:block">
           In addition to being fast and easy to use, our website is also secure. We take the privacy and security of our
           users seriously, and we use industry-standard encryption to ensure that your files are safe and secure.
 <br>
-          So why not give our website a try? It's the perfect solution for anyone who needs to merge multiple PDF files
+          So why not give our website a try? It's the perfect solution for anyone who needs to Compress multiple PDF files
           into a single document.</span></p>
       </div>
-      <form method="post" enctype="multipart/form-data" action="/merge"
+      <form method="post" enctype="multipart/form-data" action="/compress"
         class="lg:w-5/12 md:w-1/2 bg-gray-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0"
         style="display: none;">
         {% csrf_token %}
@@ -41,12 +40,13 @@
               </label>
               <p class="pl-1" id="drop_files">or drag and drop</p>
             </div>
-            <p class="text-xs text-gray-500">PDF files up to 100MB</p>
+            <p class="text-xs text-gray-500">PDF file up to 100MB</p>
           </div>
         </div>
+        {{form.file_field.errors}}
         <button type="submit"
-          class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg my-2 w-full">Merge</button>
-        <p class="text-xs text-gray-500 mt-3">Upload your Files to merge</p>
+          class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg my-2 w-full">Compress</button>
+        <p class="text-xs text-gray-500 mt-3">Upload your File to Compress</p>
       </form>
     </div>
   </section>
@@ -60,6 +60,6 @@
       console.log(e)
     })
   </script>
-  <script src="{% static 'js/script.js'%}"></script>
+  <script src="{% static 'js/script_single_drop.js'%}"></script>
 
 {% endblock %}

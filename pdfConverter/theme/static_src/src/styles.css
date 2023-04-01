@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.errorlist {
+    @apply text-sm text-red-500;
+}

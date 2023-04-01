@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block Title %} Merge Files {% endblock %}
+{% block body %}
+{% load static %}
+<div class="hidden bg-gray-200"></div>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-12 mx-auto flex flex-wrap items-center">
+      <div class="md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+        <h1 class="title-font font-medium text-3xl text-gray-900">Merge Your Files</h1>
+        <p class="leading-relaxed mt-4">If you're looking for a hassle-free way to merge PDF files, look no further! Our website offers a simple and user-friendly platform for merging multiple PDF files into a single document.
+<br>
+          Using our website to merge PDF files is easy. Simply upload your files, arrange them in the order you want,
+          and then click the merge button. Within a few seconds, you'll have a single document that contains all your
+          information.
+<br><span class="hidden lg:block">
+          In addition to being fast and easy to use, our website is also secure. We take the privacy and security of our
+          users seriously, and we use industry-standard encryption to ensure that your files are safe and secure.
+<br>
+          So why not give our website a try? It's the perfect solution for anyone who needs to merge multiple PDF files
+          into a single document.</span></p>
+      </div>
+      <form method="post" enctype="multipart/form-data" action="/merge"
+        class="lg:w-5/12 md:w-1/2 bg-gray-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0"
+        style="display: none;">
+        {% csrf_token %}
+        <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Upload Files</h2>
+        <div
+          class="relative mt-2 flex justify-center rounded-md border-2 border-dashed border-gray-400 px-6 pt-5 pb-6 transition-all"
+          id="draggable_area">
+          <div class="space-y-1 text-center transition-all">
+            <span class="material-symbols-outlined scale-[2] text-gray-600 m-4 transition-all" id="icon_action">
+              upload
+            </span>
+            <p class="text-lg h-6" id="title_box"></p>
+            <div class="flex text-sm text-gray-600">
+              <label for="id_file_field"
+                class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                <span class="bg-none">Upload a file</span>
+                {{form.file_field}}
+              </label>
+              <p class="pl-1" id="drop_files">or drag and drop</p>
+            </div>
+            <p class="text-xs text-gray-500">PDF files up to 100MB</p>
+          </div>
+          {{form.file_field.errors}}
+        </div>
+        <button type="submit"
+          class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg my-2 w-full">Merge</button>
+        <p class="text-xs text-gray-500 mt-3">Upload your Files to merge</p>
+      </form>
+    </div>
+  </section>
+  <script>
+    window.onload = () => {
+      document.querySelector("form").style.display = 'block';
+      document.querySelector("#id_file_field").classList.add('sr-only')
+    }
+    document.body.addEventListener('drop', e => {
+      e.preventDefault()
+      console.log(e)
+    })
+  </script>
+  <script src="{% static 'js/script.js'%}"></script>
+
+{% endblock %}
