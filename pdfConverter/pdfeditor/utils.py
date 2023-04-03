@@ -2,6 +2,8 @@ from PyPDF2 import PdfReader,PdfWriter
 from PyPDF2.errors import FileNotDecryptedError
 from os.path import join
 from .models import PDFFile
+from django.http.request import HttpRequest
+from django.shortcuts import render as Render
 import os
 
 def MergeFiles(files:list) -> PDFFile:
@@ -101,4 +103,13 @@ def DecryptFile(files:list,password:str|int=123) -> PDFFile:
     except FileNotDecryptedError as e:
         print(e)
         return None
+    
+
+def render(req:HttpRequest, template_name:str, context =None):
+    from .config import config as CONFIG
+    item_dict = {'config': CONFIG}
+    if context is not None:
+        for item in context:
+            item_dict[item] = context[item]
+    return Render(req,template_name,item_dict)
     

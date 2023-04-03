@@ -1,8 +1,7 @@
 from django.views.generic.edit import FormView
-from django.views.decorators.csrf import csrf_exempt
 from django.http.request import HttpRequest
 from django.http.response import *
-from django.shortcuts import render
+from .utils import render
 from .forms import FileFieldForm, CompressFileForm,EncryptFileForm
 from .utils import MergeFiles,CompressFile,EncryptFile,DecryptFile
 from .models import PDFFile
@@ -15,7 +14,10 @@ def downloadFile(request: HttpRequest, id : int):
     return render(request, 'download.html',{'name': item})
 
 def index(req: HttpRequest):
-    return render(req,'index.html');
+    return render(req,'index.html')
+
+def about(req:HttpRequest):
+    return render(req,'about.html')
 
 class MergeForm(FormView):
     form_class = FileFieldForm

@@ -18,6 +18,7 @@ from .views import *
 
 urlpatterns = [
     path('',index,name="Index"),
+    path('about',about,name="About"),
     path('merge',MergeForm.as_view(),name="Merge"),
     path('compress',CompressForm.as_view(),name="Compress"),
     path('encrypt',EncryptForm.as_view(),name="Encrypt"),
