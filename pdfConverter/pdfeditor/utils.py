@@ -6,10 +6,13 @@ from django.http.request import HttpRequest
 from django.shortcuts import render as Render
 import os
 
+
+
 def MergeFiles(files:list) -> PDFFile:
     merger = PdfWriter()
     for f in files:
         merger.append(f)
+        print(f"{f} \n")
     path_file = join('media','uploads' )
     path_templates = join('media','thumbnails' )
     for i in [path_file,path_templates]:
